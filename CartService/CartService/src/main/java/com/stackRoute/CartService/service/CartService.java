@@ -20,7 +20,7 @@ public interface CartService {
     public CartItem increaseCartItemQuantity(Dish dish, String userId);
     public CartItem decreaseCartItemQuantity(Dish dish,  String userId);
     public CartItem deleteCartItem(Dish dish, String userId);
-    public Cart getTotalCartAmount(Cart cart,String userId);
+    public double getTotalCartAmount(Cart cart,String userId);
     public Cart addDishToCartItem(Dish dish,String userId,int quantity);
     public User emptyCart(String userId);
 

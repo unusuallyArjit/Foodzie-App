@@ -104,8 +104,23 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public Cart getTotalCartAmount(Cart cart, String userId) {
-        return null;
+    public double getTotalCartAmount(Cart cart, String userId) {
+        String CartId = cart.getCartId();
+        List<CartItem>cartItemList = cart.getCartItemList();
+        double amount =0;
+        for(CartItem cartItem : cartItemList)
+        {
+            Dish dish = cartItem.getDish();
+            List<Integer> dishPrices = dish.getDishPrice();
+            double dishAmount = 0;
+            for(Integer dishprice : dishPrices)
+            {
+                dishAmount = dishAmount + dishprice;
+            }
+            int dishQuantity = cartItem.getDishQuantity();
+            amount =  amount + dishAmount*dishQuantity;
+        }
+        return amount;
     }
 
     @Override
