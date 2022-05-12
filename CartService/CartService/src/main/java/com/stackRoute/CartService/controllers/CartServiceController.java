@@ -1,10 +1,7 @@
 package com.stackRoute.CartService.controllers;
 ;
-import com.stackRoute.CartService.domain.CartItem;
+import com.stackRoute.CartService.domain.*;
 
-import com.stackRoute.CartService.domain.Dish;
-import com.stackRoute.CartService.domain.Restaurant;
-import com.stackRoute.CartService.domain.User;
 import com.stackRoute.CartService.service.CartService;
 import com.stackRoute.CartService.service.FavouriteService;
 import com.stackRoute.CartService.service.UserService;
@@ -96,6 +93,13 @@ public class CartServiceController {
     @DeleteMapping("deleteFavourite/{restaurantId}/{userId}")
     public ResponseEntity<?> deleteRestaurantFromFavourite(@PathVariable String restaurantId,@PathVariable String userId){
         responseEntity = new ResponseEntity<>(favouriteService.removeRestaurantFavourite(restaurantId,userId),HttpStatus.OK);
+        return responseEntity;
+    }
+
+    @GetMapping("getTotalAmount/{userId}")
+    public ResponseEntity<?> getTotalAmount(@RequestBody Cart cart , @PathVariable String userId )
+    {
+        responseEntity = new  ResponseEntity<>(cartService.getTotalCartAmount(cart,userId),HttpStatus.OK);
         return responseEntity;
     }
 //    @DeleteMapping("addFavourite/{userId}/{restaurantId}")

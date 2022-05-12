@@ -105,7 +105,6 @@ public class CartServiceImpl implements CartService{
 
     @Override
     public double getTotalCartAmount(Cart cart, String userId) {
-        String CartId = cart.getCartId();
         List<CartItem>cartItemList = cart.getCartItemList();
         double amount =0;
         for(CartItem cartItem : cartItemList)
