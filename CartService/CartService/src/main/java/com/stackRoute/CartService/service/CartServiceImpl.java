@@ -110,14 +110,13 @@ public class CartServiceImpl implements CartService{
         for(CartItem cartItem : cartItemList)
         {
             Dish dish = cartItem.getDish();
-            List<Integer> dishPrices = dish.getDishPrice();
-            double dishAmount = 0;
-            for(Integer dishprice : dishPrices)
-            {
-                dishAmount = dishAmount + dishprice;
-            }
+            int weight = cartItem.getWeight();
             int dishQuantity = cartItem.getDishQuantity();
-            amount =  amount + dishAmount*dishQuantity;
+            List<Integer> dishPrices = dish.getDishPrice();
+            List<Integer> dishWeights = dish.getDishWeight();
+            int index =  dishWeights.indexOf(weight);
+            Integer dishPrice = dishQuantity*dishPrices.get(index);
+            amount = dishPrice;
         }
         return amount;
     }

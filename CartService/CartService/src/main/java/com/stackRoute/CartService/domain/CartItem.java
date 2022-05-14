@@ -14,7 +14,6 @@ public class CartItem {
     private Dish dish;
     private int dishQuantity;
     private String restaurantId;
-
-
+    private int weight;
 
 }
